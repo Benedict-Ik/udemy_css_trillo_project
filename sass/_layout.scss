@@ -1,0 +1,36 @@
+.container{
+    max-width: 120rem; //if viewport is less than specified range, occupy 100% of that vp, otherwise display as specified
+    margin: 8rem auto; //centering cntainer; Left, Right is 80px. Top, Bottom is automatically set
+    background-color: var(--grey-light-2-colour);
+    box-shadow: var(--shadow-dark);
+
+    min-height: 50rem;
+}
+
+.header{
+    font-size: 1.4rem;
+    height: 7rem;
+    background-color: #fff;
+    border-bottom: var(--grey-light-2-colour);
+    
+    // converting child elements to flex
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+}
+
+.content{ //serves as the flex container
+    display: flex;
+}
+
+.sidebar{
+    background-color: var(--grey-dark-1-colour);
+    flex: 0 0 18%; //shorthand for flexgrow, flexshrink and flexbasis 
+}
+
+.hotel-view{
+    background-color: #fff;
+    background-color: orangered;
+
+    flex: 1; //implies element should grow as much as it can
+}

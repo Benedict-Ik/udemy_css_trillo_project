@@ -1,0 +1,100 @@
+// Logo
+.logo{
+    height: 3.25rem;
+    margin-left: 3rem;
+}
+
+// Search
+.search{
+    flex: 0 0 40%;
+    // background-color: deeppink;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__input{
+        font-family: inherit;
+        font-size: inherit;
+        color: inherit;
+        background: var(--grey-light-2-colour);
+        border: none;
+        border-radius: 10rem ;
+        padding: .7rem 2rem;
+        width: 90%;
+        transition: all .2s;
+        margin-right: -3rem;
+        
+        &:focus{
+            outline: none;
+            width: 100%;
+            background: var(--grey-light-3-colour);
+            
+
+        }
+
+        &::-webkit-input-placeholder{
+            font-weight: 100;
+            color: var(--grey-light-4-colour);
+        }
+
+            &::placeholder{
+                font-weight: 100;
+                color: var(--grey-light-4-colour);
+            }
+    }
+
+    &__input:focus + &__button{
+        background: var(--grey-light-3-colour);
+    }
+
+    &__button{
+        border: none;
+        background: var(--grey-light-2-colour);
+
+        &:focus{
+            outline: none;
+        }
+
+        &:active{
+            transform: translateY(.2rem);
+        }
+    }
+
+    &__icon{
+        height: 2rem;
+        width: 2rem;
+        fill: var(--grey-dark-3-colour);
+    }
+}
+
+// User Navigation
+.user-nav{
+
+    &__icon__box{
+
+
+    }
+
+    &__icon{
+        height: 2.25rem;
+        width: 2.25rem;
+    }
+
+    &__notification{
+
+    }
+
+    &__user{
+
+    }
+
+    &__user-photo{
+        height: 3.75rem;
+        border-radius: 50%;
+    }
+
+    &__user-name{
+        
+    }
+}
+
