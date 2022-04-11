@@ -1,18 +1,20 @@
 // Logo
 .logo{
     height: 3.25rem;
-    margin-left: 3rem;
+    margin-left: 2rem;
 }
 
 // Search
 .search{
     flex: 0 0 40%;
-    // background-color: deeppink;
+
+    //creating a child flex container
     display: flex;
     align-items: center;
     justify-content: center;
 
     &__input{
+        //input elents don't (by default) inherit font properties & colour
         font-family: inherit;
         font-size: inherit;
         color: inherit;
@@ -21,15 +23,13 @@
         border-radius: 10rem ;
         padding: .7rem 2rem;
         width: 90%;
-        transition: all .2s;
         margin-right: -3rem;
+        transition: all .2s;
         
         &:focus{
             outline: none;
             width: 100%;
             background: var(--grey-light-3-colour);
-            
-
         }
 
         &::-webkit-input-placeholder{
@@ -37,10 +37,11 @@
             color: var(--grey-light-4-colour);
         }
 
-            &::placeholder{
-                font-weight: 100;
-                color: var(--grey-light-4-colour);
-            }
+        //basically same as above code block
+        &::placeholder{
+            font-weight: 100;
+            color: var(--grey-light-4-colour);
+        }
     }
 
     &__input:focus + &__button{
@@ -69,32 +70,76 @@
 
 // User Navigation
 .user-nav{
+    display: flex;
+    align-items: center;
+    align-self: stretch;
+
+    //all the direct children of user-nav
+    & > * {
+        padding: 0 2rem;
+        cursor: pointer;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    & > *:hover {
+        background-color: var(--grey-light-2-colour);
+    }
 
     &__icon__box{
-
-
+        position: relative;
     }
 
     &__icon{
         height: 2.25rem;
         width: 2.25rem;
+        fill: var(--grey-dark-2-colour);
     }
 
     &__notification{
+        font-size: .8rem;
+        height: 1.75rem;
+        width: 1.75rem;
+        border-radius: 50%;
+        background-color: var(--primary-colour);
+        color: #fff;
+        position: absolute;
+        top: 1.5rem;
+        right: 1.1rem;
 
-    }
-
-    &__user{
-
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     &__user-photo{
         height: 3.75rem;
         border-radius: 50%;
-    }
-
-    &__user-name{
-        
+        margin-right: 1rem;
     }
 }
 
+// Side navigation
+.side-nav{
+
+    &__item{
+
+    }
+
+    &__link{
+
+    }
+
+    &__icon{
+        width: 1.75rem;
+        height: 1.75rem;
+    }
+}    
+// Legal
+.legal{
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 2.5rem;
+    color: var(--grey-light-4-colour);
+}

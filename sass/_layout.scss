@@ -26,11 +26,15 @@
 .sidebar{
     background-color: var(--grey-dark-1-colour);
     flex: 0 0 18%; //shorthand for flexgrow, flexshrink and flexbasis 
+
+    display: flex;
+    flex-direction:column; //changes natural convention. Main axis is now cross axis and vice versa
 }
 
 .hotel-view{
-    background-color: #fff;
+    //testing
     background-color: orangered;
+    height: 80rem;
 
     flex: 1; //implies element should grow as much as it can
 }
