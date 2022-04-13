@@ -29,6 +29,7 @@
 
     display: flex;
     flex-direction:column; //changes natural convention. Main axis is now cross axis and vice versa
+    justify-content: space-between; //main axis is now top to bottom
 }
 
 .hotel-view{

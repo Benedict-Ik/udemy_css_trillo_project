@@ -122,20 +122,68 @@
 
 // Side navigation
 .side-nav{
+    font-size: 1.4rem;
+    list-style: none;
+    margin-top: 3.5rem;
 
     &__item{
+        position: relative;
+        &:not(:last-child){
+            margin-bottom:.5rem; //adding margin bottom on all items except the last
+        }
 
+        // &--active{
+            
+        // }
     }
 
-    &__link{
+    &__item::before{
+        content: ""; //always specify content else it won't display
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: .3rem;
+        background-color: var(--primary-colour);
+        transform: scaleY(0);
+        transform-origin: bottom;
+        transition: transform .2s, //transitions after 2s on transform property
+                    width .4s cubic-bezier(1,0,0,1) .2s, //transitions after .4s applying the specified value on width property with a slight delay of .2s    }
+                    background-color .1s;
+    }
 
+    &__item:hover::before,
+    &__item--active::before{
+        transform: scaleY(1);
+        width: 100%;    
+    }
+
+    &__item--active::before{
+        background-color: var(--primary-colour-light);
+    }
+
+
+    &__link:link,&__link:visited{
+        color: var(--grey-light-1-colour);
+        text-decoration: none;
+        text-transform: uppercase;
+        display: block;
+        padding: 1.5rem 3rem;
+        position: relative;
+        z-index: 20; // z-index only works for specified positions
+
+        display: flex;
+        align-items: center;
     }
 
     &__icon{
         width: 1.75rem;
         height: 1.75rem;
+        margin-right: 2rem;
+        fill:var(--grey-light-1-colour);
     }
-}    
+} 
+
 // Legal
 .legal{
     font-size: 1.2rem;
