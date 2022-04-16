@@ -11,7 +11,7 @@
     font-size: 1.4rem;
     height: 7rem;
     background-color: #fff;
-    border-bottom: var(--grey-light-2-colour);
+    border-bottom: 1px solid var(--grey-light-2-colour);
     
     // converting child elements to flex
     display: flex;
@@ -34,8 +34,45 @@
 
 .hotel-view{
     //testing
-    background-color: orangered;
-    height: 80rem;
-
+    // background-color: orangered;
+    // height: 80rem;
+    
+    //main code
     flex: 1; //implies element should grow as much as it can
 }
+
+.detail{
+    font-size: 1.4rem;
+    display: flex; // enables child containers to be side by side
+    padding: 4.5rem;
+    background-color: var(--grey-light-1-colour);
+    border-bottom: var(--horizontal-rule);
+}
+
+.description{
+    background-color: #fff;
+    box-shadow: var(--shadow-light);
+    padding: 3rem;
+    flex: 0 0 60%;
+    margin-right: 4.5rem;
+}
+
+.user-reviews{
+    //Testing
+    background-color: transparent;
+
+    // flex: 0 0 40%;
+    flex: 1; // occupies the remaining space left by the description container
+}
+
+// .user-reviews__1{
+//     font-size: 1.4rem;
+//     background-color: #fff;
+//     box-shadow: var(--shadow-light);
+//     padding: 3rem;
+//     flex: 1;
+// }
+
+// .user-reviews__photo{
+//     display: flex;
+// }
