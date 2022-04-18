@@ -14,6 +14,12 @@
     align-items: center;
     justify-content: center;
 
+    @media only screen and (max-width:$bp-xsmall ){
+        order: 1;
+        flex: 0 0 100%; // assume width of its present container
+        background: var(--grey-light-2-colour);
+    }
+
     &__input{
         //input elents don't (by default) inherit font properties & colour
         font-family: inherit;
@@ -26,6 +32,7 @@
         width: 90%;
         margin-right: -3rem;
         transition: all .2s;
+
         
         &:focus{
             outline: none;
@@ -129,10 +136,23 @@
     list-style: none;
     margin-top: 3.5rem;
 
+    @media only screen and (max-width:$bp-medium ){
+        display: flex;
+        margin: 0;
+    }
+
     &__item{
         position: relative;
         &:not(:last-child){
             margin-bottom:.5rem; //adding margin bottom on all items except the last
+
+            @media only screen and (max-width:$bp-medium ){
+                margin-bottom: 0;
+            }
+        }
+
+        @media only screen and (max-width:$bp-medium ){
+            flex: 1; //giving all items the capacity to occupy the same space
         }
     }
 
@@ -173,6 +193,18 @@
 
         display: flex;
         align-items: center;
+
+        @media only screen and (max-width:$bp-medium ){
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        @media only screen and (max-width:$bp-small ){
+            flex-direction: column;
+            padding: 1.4rem .5rem;
+        }
+
+        
     }
 
     &__icon{
@@ -180,6 +212,13 @@
         height: 1.75rem;
         margin-right: 2rem;
         fill:var(--grey-light-1-colour);
+
+        @media only screen and (max-width:$bp-small ){
+            width: 1.35rem;
+            height: 1.35rem;
+            margin-right: 0;
+            margin-bottom: .5rem;
+        }
     }
 } 
 
@@ -190,6 +229,10 @@
     text-align: center;
     padding: 2.5rem;
     color: var(--grey-light-4-colour);
+
+    @media only screen and (max-width:$bp-medium ){
+        display: none;
+    }
 }
 
 
@@ -227,6 +270,11 @@
         text-transform: uppercase;
         letter-spacing: .1rem;
         padding: 1.5rem 3rem;
+        
+        @media only screen and (max-width:$bp-small ){
+            font-size: 1.75rem;
+            padding: 1.25rem 1.5rem;
+        }
     }
 
     &__stars{
@@ -263,17 +311,29 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+
+        @media only screen and (max-width:$bp-small ){
+            padding: 0 1.5rem;
+        } 
     }
 
     &__rating-average{
         font-size: 2.25rem;
         font-weight: 300;
         margin-bottom: -.4rem;
+
+        @media only screen and (max-width:$bp-small ){
+            font-size: 1.75rem;
+        } 
     }
 
     &__rating-count{
         font-size: .8rem;
         text-transform: uppercase;
+
+        @media only screen and (max-width:$bp-small ){
+            font-size: .7rem;
+        } 
     }
 }
 
@@ -290,8 +350,17 @@
     cursor: pointer;
     transition: all .2s;
 
+    & span{
+        margin-left: .3rem;
+        transition: margin-left .3s;
+    }
+
     &:hover{
         color: var(--grey-dark-1-colour);
+
+        span{
+            margin-left: .8rem;
+        }
     }
 
     &:focus{
@@ -348,13 +417,16 @@
         margin-right: .7rem;
 
         //older browsers approach to using icons in css
-        // background-image: url(../img/chevron-thin-right.svg);
-        // background-size: cover;
+        background-image: url(../img/chevron-thin-right.svg);
+        background-size: cover;
 
         //modern browsers approach to using icons in css
+        @supports(-webkit-mask-image: url()) or (webkit-mask-image: url()) { //feature query to determine if present browser supporrts line of code. If true it runs the code below, else it runs the code above
         background-color: var(--primary-colour);
         mask-image: url(../img/chevron-thin-right.svg);
         mask-size: cover;
+        background-image: none;
+        }
     }
 }
 
@@ -372,7 +444,7 @@
     }
     
     &__friends {
-        
+        display: flex;
     }
     
     &__photo {
@@ -384,7 +456,7 @@
         border: .3rem solid #fff;
 
         &:not(:last-child){ //all elements except the last obeys the following rule
-            margin-right: -1.5rem;
+            margin-right: -2rem;
         }
     }
 }
@@ -396,9 +468,18 @@
     box-shadow: var(--shadow-light);
     padding: 3rem;
     margin-bottom: 3.5rem;
+    position: relative;
+    overflow: hidden;
+
+    @media only screen and (max-width:$bp-medium ){
+        padding: 2rem;
+        margin-bottom: 3rem;
+    }
 
     &__text{
         margin-bottom: 2rem;
+        z-index: 20;  //Z-index only works if position is set
+        position: relative;
     }
 
     &__user{
@@ -410,7 +491,7 @@
         height: 4.5rem;
         width: 4.5rem;
         border-radius: 50%;
-        margin-right: 1rem;
+        margin-right: 1.5rem;
     }
 
     &__user-box{
@@ -418,16 +499,115 @@
     }
 
     &__user-name{
-        font-weight: bold;
+        font-size: 1.1rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        margin-bottom: .4rem;
     }
     
     &__user-date{
-
+        font-size: 1rem;
+        color: var(--grey-dark-3-colour);
     }
 
     &__rating{
         color: var(--primary-colour);
-        font-size: 2.5rem;
+        font-size: 2.2rem;
+        font-weight: 300;
     }
 
+
+    &::before{
+        content: "\201C";
+        position: absolute;
+        top: -2.75rem;
+        left: -1rem;
+        line-height: 1;
+        font-size: 20rem;
+        color: var(--grey-light-2-colour);
+        font-family: sans-serif;
+        z-index: 10;
+
+    }
+}
+
+
+// CTA
+.cta{
+    padding: 3.5rem 0;
+    text-align: center;
+    
+    @media only screen and (max-width:$bp-medium ){
+        padding: 2.5rem 0;
+    }
+
+    &__book-now{
+        font-size:2rem;
+        font-weight: 300;
+        margin-bottom: 2.5rem;
+        text-transform: uppercase;
+
+        @media only screen and (max-width:$bp-xsmall ){
+            font-size:1.5rem;
+        }
+    }
+}
+
+
+// Button
+.btn{
+    font-size: 1.5rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 10rem;
+    background-image: linear-gradient(to right, var(--primary-colour-light), var(--primary-colour-dark));
+    color: #fff;
+
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+
+    & > *{ //for all child elements of button class (.btn)
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        transition: all .2s; //recurring codes in child elements
+    }
+
+    &__visible{
+        // display: inline-block;
+        // height: 100%;
+        // width: 100%;
+        padding: 2rem 7.5rem; //padding also determines the size of the button
+    }
+
+    &__invisible{
+        // display: inline-block;
+        // height: 100%;
+        // width: 100%;
+        position: absolute;
+        padding: 2rem 0;
+        left: 0;
+        top: -100%; //moves up 100% of the element's height
+        // transition: all .2s;
+    }
+
+    &:hover{
+        background-image: linear-gradient(to left, var(--primary-colour-light), var(--primary-colour-dark));
+    }
+
+    &:hover &__visible{
+        transform: translateY(100%); //translate 100% of its height down
+    }
+
+    &:hover &__invisible{
+        top: 0;
+    }
+
+    &:focus{
+        outline: none;
+        animation: pulsate 1s infinite;
+    }
+      
 }
